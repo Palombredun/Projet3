@@ -1,26 +1,28 @@
 #!/usr/bin/env python
 
-import os
+import pygame
+import sys
+from pygame.locals import *
+from app import maze
 
-os.chdir("./carte")
 
-with open("labyrinthe.txt", "r") as carte:
-    labyrinthe = carte.read()
-no_line = 0
-for letter in labyrinthe:
-    if letter == "\n":
-        no_line += 1
-    
-labyrinthe = labyrinthe.replace('\n', '')
-no_column = len(labyrinthe) // no_line
-   
+victory = 1
 
-liste = [ [0]*no_column for i in range(no_line) ]
+window = maze.Labyrinth()
 
-compteur = 0
-for i in range(15):
-    for j in range(15):
-        liste[i][j] = labyrinthe[compteur]
-        compteur += 1
-       
-print(liste)
+while victory:
+    """
+    if event.type == KEYDOWN:
+        if event.key == K_LEFT:
+            pass
+        elif event.key == K_RIGHT:
+            pass
+        elif event.key == K_UP:
+            pass
+        elif event.key == K_DOWN:
+            pass
+    """
+    victory = int(input())
+
+
+print("Félicitations ! Vous avez gagné !")
