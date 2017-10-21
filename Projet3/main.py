@@ -3,30 +3,28 @@
 import pygame
 import sys
 from pygame.locals import *
-from app import maze
-from app import interact
+from app import labyrinth as lb
+from app import movements
 
-window = maze.Labyrinth()
-i, j = 0
-while maze.labyrinth[i][j] != 'h':
-        i+=1
-        j+=1
-interact = interact.Interact(self, i, j)
+# Initialization of pygame :
+pygame.init()
 
-while interact.victory:
-    if event.type == KEYDOWN:
-        if event.key == K_LEFT:
-            interact.hero_position = interact.move_left(maze.labyrinth, interact.hero_position)
-            maze.labyrinth[interact.hero_position[0]][interact.hero_position[1]] = 'h'
-        elif event.key == K_RIGHT:
-            pass
-        elif event.key == K_UP:
-            pass
-        elif event.key == K_DOWN:
-            interact.hero_position = interact.move_down(maze.labyrinth, interact.hero_position)
-            maze.labyrinth[interact.hero_position[0]][interact.hero_position[1]] = 'h'
-        pygame.display.flip()
-    victory = int(input())
+# Initialization of the window :
+
+mvt = movements.Movements()
+victory = 1
+while victory:
+    for event in pygame.event.get():
+        if event.type == KEYDOWN:
+            if event.key == K_LEFT:
+                mvt.move_left()
+            elif event.key == K_RIGHT:
+                mvt.move_right()
+            elif event.key == K_UP:
+                mvt.move_up()
+            elif event.key == K_DOWN:
+                mvt.move_down()
+    pygame.display.flip()
 
 
 print("Félicitations ! Vous avez gagné !")

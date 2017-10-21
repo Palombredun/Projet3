@@ -85,7 +85,6 @@ class Labyrinth:
         self.no_row = tmp[1]
         self.no_column = tmp[2]
 
-
         # The labyrinth is updated with the three objects placed randomly
         self.labyrinth = self.place_objects(self.labyrinth, self.no_row, self.no_column)
 
@@ -104,15 +103,20 @@ class Labyrinth:
         self.plastic_tube = pygame.image.load("plastic_tube.png").convert_alpha()
         self.ether = pygame.image.load("ether.png").convert_alpha()
 
+        # display of the base of the labyrinth
         for i in range(self.no_row):
             for j in range(self.no_column):
                 if self.labyrinth[i][j] == 'm':
                     self.graphicLabyrinth.blit(self.wall, (32*i, 32*j))
                 else:
                     self.graphicLabyrinth.blit(self.path, (32*i, 32*j))
+        # display of the other items : hero, objects, guardian :
         for i in range(self.no_row):
             for j in range(self.no_column):
                 if self.labyrinth[i][j] == 'h':
+                    # the hero is located differently from the others since
+                    # he has to move on the map
+                    #self.hero_position = self.hero.get_rect(center=(32*i-16, 32*j-16))
                     self.graphicLabyrinth.blit(self.hero, (32*i, 32*j))
                 elif self.labyrinth[i][j] == 'v':
                     self.graphicLabyrinth.blit(self.guardian, (32*i, 32*j))
