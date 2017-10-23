@@ -28,9 +28,10 @@ class Labyrinth:
         for letter in raw_labyrinth:
             if letter == "\n":
                 no_row += 1
-        no_column = len(raw_labyrinth)//no_row
         # strip 'raw_labyrinth' from the line breaks
         raw_labyrinth = raw_labyrinth.replace('\n', '')
+        no_column = len(raw_labyrinth)//no_row
+
 
         # 'labyrinth' is a 2 dimensions list with 'no_row' rows
         # and 'no_column' columns (here 15*15)
@@ -38,7 +39,7 @@ class Labyrinth:
         counter = 0
         for i in range(15):
             for j in range(15):
-                labyrinth[i][j] = raw_labyrinth[counter]
+                labyrinth[j][i] = raw_labyrinth[counter]
                 counter += 1
         lst = [labyrinth, no_row, no_column]
         return lst
@@ -51,22 +52,22 @@ class Labyrinth:
         ether_true = 1
 
         while needle_true:
-            x_row = random.randint(0, no_row-1)
-            x_ord = random.randint(0, no_column-1)
-            if labyrinth[x_row][x_ord] == 'o':
-                self.labyrinth[x_row][x_ord] = 'n'
+            n_row = random.randint(0, no_row-1)
+            n_ord = random.randint(0, no_column-1)
+            if labyrinth[n_row][n_ord] == 'o':
+                self.labyrinth[n_row][n_ord] = 'n'
                 needle_true = 0
         while plastic_tube_true:
-            y_row = random.randint(0, no_row-1)
-            y_ord = random.randint(0, no_column-1)
-            if labyrinth[y_row][y_ord] == 'o':
-                self.labyrinth[y_row][y_ord] = 'p'
+            p_row = random.randint(0, no_row-1)
+            p_ord = random.randint(0, no_column-1)
+            if labyrinth[p_row][p_ord] == 'o':
+                self.labyrinth[p_ord][p_row] = 'p'
                 plastic_tube_true = 0
         while ether_true:
-            z_row = random.randint(0, no_row-1)
-            z_ord = random.randint(0, no_column-1)
-            if labyrinth[z_row][z_ord] == 'o':
-                self.labyrinth[z_row][z_ord] = 'e'
+            e_row = random.randint(0, no_row-1)
+            e_ord = random.randint(0, no_column-1)
+            if labyrinth[e_row][e_ord] == 'o':
+                self.labyrinth[e_row][e_ord] = 'e'
                 ether_true = 0
 
 
@@ -114,12 +115,11 @@ class Labyrinth:
         for i in range(self.no_row):
             for j in range(self.no_column):
                 if self.labyrinth[i][j] == 'h':
-                    # the hero is located differently from the others since
-                    # he has to move on the map
-                    #self.hero_position = self.hero.get_rect(center=(32*i-16, 32*j-16))
                     self.graphicLabyrinth.blit(self.hero, (32*i, 32*j))
+                    self.hero_position = [i, j]
                 elif self.labyrinth[i][j] == 'v':
                     self.graphicLabyrinth.blit(self.guardian, (32*i, 32*j))
+                    self.guardian_position = [i,j-1]
                 elif self.labyrinth[i][j] == 'n': # n for needle
                     self.graphicLabyrinth.blit(self.needle, (32*i, 32*j))
                 elif self.labyrinth[i][j] == 'p': # p for plastic_tube

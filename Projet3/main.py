@@ -25,6 +25,15 @@ while victory:
             elif event.key == K_DOWN:
                 mvt.move_down()
     pygame.display.flip()
+    state = mvt.is_victory()
+    if state == 1:
+        print("Félicitations ! Vous avez gagné !")
+        break
+    elif state == -1:
+        print("Vous avez perdu, il vous manquait des objets")
+        break
+    elif state == 0:
+        continue
 
 
 print("Félicitations ! Vous avez gagné !")
