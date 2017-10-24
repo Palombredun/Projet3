@@ -119,7 +119,7 @@ class Labyrinth:
                     self.hero_position = [i, j]
                 elif self.labyrinth[i][j] == 'v':
                     self.graphicLabyrinth.blit(self.guardian, (32*i, 32*j))
-                    self.guardian_position = [i,j-1]
+                    self.guardian_position = [i-1,j]
                 elif self.labyrinth[i][j] == 'n': # n for needle
                     self.graphicLabyrinth.blit(self.needle, (32*i, 32*j))
                 elif self.labyrinth[i][j] == 'p': # p for plastic_tube

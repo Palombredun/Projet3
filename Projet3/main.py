@@ -9,8 +9,23 @@ from app import movements
 # Initialization of pygame :
 pygame.init()
 
-# Initialization of the window :
+# Rules :
+print("*************************************")
+print("                                     ")
+print("         Saving MacGyver             ")
+print("                                     ")
+print("*************************************")
 
+print("In this game, you are MacGyver, famous hero of the\nnot so modern times.")
+print("In order to pass the guardian (the one with the funny hair), you have")
+print("to collect three items randomly located on the map. A needle, a plastic tube")
+print("and a bottle of ether should be enough for you to put the guardian to sleep.")
+print("But don't be cocky ! Without these tree items you won't be able to defeat")
+print("him !\n")
+print("In order to move on the map you have to use the arrow keys on your keyboard.")
+print("Good Luck !")
+
+# Display of the game :
 mvt = movements.Movements()
 victory = 1
 while victory:
@@ -34,6 +49,3 @@ while victory:
         break
     elif state == 0:
         continue
-
-
-print("Félicitations ! Vous avez gagné !")

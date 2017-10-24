@@ -24,7 +24,6 @@ class Movements(lb.Labyrinth):
     def move_right(self):
         self.test_position = self.hero_position[:]
         self.test_position[0] += 1
-        print(self.test_position)
         #test if the position is a wall :
         if self.is_wall(self.test_position) is True:
             pass
@@ -41,7 +40,6 @@ class Movements(lb.Labyrinth):
     def move_up(self):
         self.test_position = self.hero_position[:]
         self.test_position[1] -= 1
-        print(self.test_position)
         #test if the position is a wall :
         if self.is_wall(self.test_position) is True:
             pass
@@ -58,7 +56,6 @@ class Movements(lb.Labyrinth):
     def move_down(self):
         self.test_position = self.hero_position[:]
         self.test_position[1] += 1
-        print(self.test_position)
         #test if the position is a wall :
         if self.is_wall(self.test_position) is True:
             pass
@@ -81,10 +78,13 @@ class Movements(lb.Labyrinth):
     def is_object(self, test_position):
         if self.labyrinth[test_position[0]][test_position[1]] in 'npe':
             self.objects += 1
+            print(self.objects)
     def is_victory(self):
         if (self.objects == 3) and (self.hero_position == self.guardian_position):
+            print("1")
             return 1
         elif (self.objects < 3) and (self.hero_position == self.guardian_position):
+            print("-1")
             return -1
         elif self.hero_position != self.guardian_position:
             return 0
