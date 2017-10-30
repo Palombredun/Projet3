@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*-coding:Utf-8 -*
 
 import pygame
 from pygame.locals import *
@@ -31,8 +32,6 @@ class Labyrinth:
         # strip 'raw_labyrinth' from the line breaks
         raw_labyrinth = raw_labyrinth.replace('\n', '')
         no_column = len(raw_labyrinth)//no_row
-
-
         # 'labyrinth' is a 2 dimensions list with 'no_row' rows
         # and 'no_column' columns (here 15*15)
         labyrinth = [ [0]*no_column for i in range(no_row) ]
@@ -43,7 +42,6 @@ class Labyrinth:
                 counter += 1
         lst = [labyrinth, no_row, no_column]
         return lst
-
     def place_objects(self, labyrinth, no_row, no_column):
         """Placement of the three objects needed for the victory
         and the management of their counter display"""

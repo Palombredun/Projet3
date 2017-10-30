@@ -1,13 +1,12 @@
 #!/usr/bin/env python
+# -*-coding:Utf-8 -*
+
+"""File used to run the game."""
 
 import pygame
-import sys
 from pygame.locals import *
-from app import labyrinth as lb
 from app import movements
 
-# Initialization of pygame :
-pygame.init()
 
 # Rules :
 print("*************************************")
@@ -30,22 +29,22 @@ mvt = movements.Movements()
 victory = 1
 while victory:
     for event in pygame.event.get():
-        if event.type == KEYDOWN:
-            if event.key == K_LEFT:
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
                 mvt.move_left()
-            elif event.key == K_RIGHT:
+            elif event.key == pygame.K_RIGHT:
                 mvt.move_right()
-            elif event.key == K_UP:
+            elif event.key == pygame.K_UP:
                 mvt.move_up()
-            elif event.key == K_DOWN:
+            elif event.key == pygame.K_DOWN:
                 mvt.move_down()
     pygame.display.flip()
     state = mvt.is_victory()
     if state == 1:
-        print("Félicitations ! Vous avez gagné !")
+        print("Congratulations ! You have won !")
         break
     elif state == -1:
-        print("Vous avez perdu, il vous manquait des objets")
+        print("You lost, you did not have all the items needed.")
         break
     elif state == 0:
         continue
